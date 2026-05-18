@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Virtual Vernissage - Two Robots</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <style>
+        body { margin:0; overflow:hidden; background:#000; }
+        .arrow-btn {
+            position: absolute; bottom: 25px; width: 55px; height: 55px;
+            background: rgba(255, 105, 180, 0.85); color: white;
+            border: none; border-radius: 12px; font-size: 28px;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 100; touch-action: manipulation;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        #forward { left: 50%; transform: translateX(-50%); bottom: 100px; }
+        #back    { left: 50%; transform: translateX(-50%); bottom: 25px; }
+        #left    { left: 20px; bottom: 62px; }
+        #right   { right: 20px; bottom: 62px; }
+    </style>
+</head>
+<body>
+
+    <button id="forward" class="arrow-btn">↑</button>
+    <button id="back"    class="arrow-btn">↓</button>
+    <button id="left"    class="arrow-btn">←</button>
+    <button id="right"   class="arrow-btn">→</button>
+
+    <a-scene background="color: #99ddff" fog="type: linear; color: #99ddff; near: 5; far: 180"
+             renderer="antialias: false; logarithmicDepthBuffer: true" shadow="cast: false; receive: false">
+
+        <!-- Ocean -->
+        <a-plane position="0 0.05 -145" rotation="-90 0 0" width="400" height="280" color="#0088ff" material="opacity: 0.9; transparent: true"></a-plane>
+
+        <!-- Beach -->
+        <a-plane position="0 0.08 0" rotation="-90 0 0" width="240" height="230" color="#ffe8b3"></a-plane>
+
+        <!-- Pink Street -->
+        <a-plane position="0 0.18 -35" rotation="-90 0 0" width="16" height="210" color="#ff4da6"></a-plane>
+
+        <!-- Green Stripe -->
+        <a-plane position="19 0.22 -35" rotation="-90 0 0" width="9" height="210" color="#4ade80"></a-plane>
+
+        <!-- Pink Trees -->
+        <a-entity position="-28 0 -28"><a-cylinder height="6" radius="1.1" color="#8B4513" position="0 3 0"></a-cylinder><a-cone position="0 7 0" height="8" radius-bottom="4.5" color="#ff69b4"></a-cone></a-entity>
+        <a-entity position="-35 0 -55"><a-cylinder height="6" radius="1.1" color="#8B4513" position="0 3 0"></a-cylinder><a-cone position="0 7 0" height="8" radius-bottom="4.5" color="#ff69b4"></a-cone></a-entity>
+        <a-entity position="29 0 -32"><a-cylinder height="6" radius="1.1" color="#8B4513" position="0 3 0"></a-cylinder><a-cone position="0 7 0" height="8" radius-bottom="4.5" color="#ff69b4"></a-cone></a-entity>
+
+        <!-- Five Pink Sofas on left -->
+        <a-entity position="-16 1.3 32" rotation="0 40 0">
+            <a-box width="5.8" height="1.1" depth="2.8" color="#ff69b4" position="0 0.7 0"></a-box>
+            <a-box width="5.8" height="2.4" depth="0.7" color="#ff69b4" position="0 2.1 -1.1"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 0.9 0"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 1.2 0"></a-box>
+        </a-entity>
+        <a-entity position="-19 1.3 48" rotation="0 35 0">
+            <a-box width="5.8" height="1.1" depth="2.8" color="#ff69b4" position="0 0.7 0"></a-box>
+            <a-box width="5.8" height="2.4" depth="0.7" color="#ff69b4" position="0 2.1 -1.1"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 0.9 0"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 1.2 0"></a-box>
+        </a-entity>
+        <a-entity position="-17 1.3 65" rotation="0 45 0">
+            <a-box width="5.8" height="1.1" depth="2.8" color="#ff69b4" position="0 0.7 0"></a-box>
+            <a-box width="5.8" height="2.4" depth="0.7" color="#ff69b4" position="0 2.1 -1.1"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 0.9 0"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 1.2 0"></a-box>
+        </a-entity>
+        <a-entity position="-20 1.3 82" rotation="0 38 0">
+            <a-box width="5.8" height="1.1" depth="2.8" color="#ff69b4" position="0 0.7 0"></a-box>
+            <a-box width="5.8" height="2.4" depth="0.7" color="#ff69b4" position="0 2.1 -1.1"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 0.9 0"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 1.2 0"></a-box>
+        </a-entity>
+        <a-entity position="-15 1.3 100" rotation="0 42 0">
+            <a-box width="5.8" height="1.1" depth="2.8" color="#ff69b4" position="0 0.7 0"></a-box>
+            <a-box width="5.8" height="2.4" depth="0.7" color="#ff69b4" position="0 2.1 -1.1"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 0.9 0"></a-box>
+            <a-box width="5.6" height="0.15" depth="2.7" color="#ffffff" position="0 1.2 0"></a-box>
+        </a-entity>
+
+        <!-- Pink Robot (Drinks) with tray and cocktail glasses -->
+        <a-entity id="robot-pink" position="-6 1.5 48">
+            <a-box width="1.6" height="2.2" depth="1.2" color="#ff69b4" position="0 1.8 0"></a-box>
+            <a-sphere radius="0.8" color="#ff69b4" position="0 3.2 0"></a-sphere>
+            <a-sphere radius="0.22" color="#ffffff" position="-0.3 3.3 0.65"></a-sphere>
+            <a-sphere radius="0.22" color="#ffffff" position="0.3 3.3 0.65"></a-sphere>
+            <a-sphere radius="0.1" color="#222222" position="-0.3 3.3 0.75"></a-sphere>
+            <a-sphere radius="0.1" color="#222222" position="0.3 3.3 0.75"></a-sphere>
+            <a-box width="2.2" height="0.1" depth="1.4" color="#333333" position="0 2.8 1.2" rotation="15 0 0"></a-box>
+            <a-cylinder height="0.8" radius="0.2" color="#a0d8ff" position="-0.6 3.0 1.4"></a-cylinder>
+            <a-cylinder height="0.8" radius="0.2" color="#a0d8ff" position="0 3.0 1.4"></a-cylinder>
+            <a-cylinder height="0.8" radius="0.2" color="#a0d8ff" position="0.6 3.0 1.4"></a-cylinder>
+        </a-entity>
+
+        <!-- Blue Robot (Food) with tray, bread and cheese on little plates -->
+        <a-entity id="robot-blue" position="8 1.5 75">
+            <a-box width="1.6" height="2.2" depth="1.2" color="#4a9eff" position="0 1.8 0"></a-box>
+            <a-sphere radius="0.8" color="#4a9eff" position="0 3.2 0"></a-sphere>
+            <a-sphere radius="0.22" color="#ffffff" position="-0.3 3.3 0.65"></a-sphere>
+            <a-sphere radius="0.22" color="#ffffff" position="0.3 3.3 0.65"></a-sphere>
+            <a-sphere radius="0.1" color="#222222" position="-0.3 3.3 0.75"></a-sphere>
+            <a-sphere radius="0.1" color="#222222" position="0.3 3.3 0.75"></a-sphere>
+            <a-box width="2.2" height="0.1" depth="1.4" color="#333333" position="0 2.8 1.2" rotation="15 0 0"></a-box>
+            <a-box width="0.9" height="0.4" depth="0.9" color="#f4d9a8" position="-0.7 3.0 1.4"></a-box>
+            <a-box width="0.7" height="0.4" depth="0.7" color="#ffcc66" position="0 3.0 1.4"></a-box>
+            <a-box width="0.6" height="0.3" depth="0.8" color="#ffcc66" position="0.7 3.0 1.4"></a-box>
+        </a-entity>
+
+        <!-- 10 Picture Screens on the right side -->
+        <a-entity position="19 4.8 48" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen1" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+        <a-entity position="19 4.8 34" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen2" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+        <a-entity position="19 4.8 20" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen3" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+        <a-entity position="19 4.8 6" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen4" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+        <a-entity position="19 4.8 -8" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen5" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+        <a-entity position="19 4.8 -23" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen6" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+        <a-entity position="19 4.8 -38" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen7" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+        <a-entity position="19 4.8 -53" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen8" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+        <a-entity position="19 4.8 -68" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen9" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+        <a-entity position="19 4.8 -83" rotation="0 90 0">
+            <a-box width="8" height="10" depth="0.6" color="#1a1a1a"></a-box>
+            <a-plane id="screen10" width="7.2" height="9" color="#111111" position="0 0 0.35"></a-plane>
+            <a-box width="1.8" height="0.4" depth="3.5" color="#1a1a1a" position="0 -5.3 0"></a-box>
+        </a-entity>
+
+        <a-camera id="cam" position="0 6.8 58" look-controls="touchEnabled: true"></a-camera>
+
+    </a-scene>
+
+    <script>
+        // ====================== 🌸🌸🌸 EDIT YOUR 10 JPEG LINKS HERE (LEFT SIDE) 🌸🌸🌸 ======================
+        const pictureUrls = [
+            "https://picsum.photos/id/1015/800/1200",   // 🌸 Picture 1
+            "https://picsum.photos/id/133/800/1200",    // 🌸 Picture 2
+            "https://picsum.photos/id/201/800/1200",    // 🌸 Picture 3
+            "https://picsum.photos/id/251/800/1200",    // 🌸 Picture 4
+            "https://picsum.photos/id/1016/800/1200",   // 🌸 Picture 5
+            "https://picsum.photos/id/133/800/1200",    // 🌸 Picture 6
+            "https://picsum.photos/id/201/800/1200",    // 🌸 Picture 7
+            "https://picsum.photos/id/251/800/1200",    // 🌸 Picture 8
+            "https://picsum.photos/id/1016/800/1200",   // 🌸 Picture 9
+            "https://picsum.photos/id/133/800/1200"     // 🌸 Picture 10
+        ];
+
+        // ====================== 🎵🎵🎵 EDIT YOUR MP3 MUSIC LINK HERE 🎵🎵🎵 ======================
+        const musicUrl = "https://example.com/your-music.mp3";   // ← Replace with your MP3 link (raw GitHub URL after upload)
+
+        // Apply JPEGs
+        for (let i = 1; i <= 10; i++) {
+            const screen = document.getElementById('screen' + i);
+            if (screen) screen.setAttribute('material', 'src', pictureUrls[i-1]);
+        }
+
+        // ====================== MOVEMENT AND ROBOTS (DO NOT CHANGE) ======================
+        const camera = document.getElementById('cam');
+        let moveForward = 0, moveSide = 0;
+
+        // Arrow controls
+        document.getElementById('forward').addEventListener('touchstart', () => moveForward = 0.16);
+        document.getElementById('forward').addEventListener('touchend', () => moveForward = 0);
+        document.getElementById('forward').addEventListener('mousedown', () => moveForward = 0.16);
+        document.getElementById('forward').addEventListener('mouseup', () => moveForward = 0);
+
+        document.getElementById('back').addEventListener('touchstart', () => moveForward = -0.11);
+        document.getElementById('back').addEventListener('touchend', () => moveForward = 0);
+        document.getElementById('back').addEventListener('mousedown', () => moveForward = -0.11);
+        document.getElementById('back').addEventListener('mouseup', () => moveForward = 0);
+
+        document.getElementById('left').addEventListener('touchstart', () => moveSide = -0.13);
+        document.getElementById('left').addEventListener('touchend', () => moveSide = 0);
+        document.getElementById('left').addEventListener('mousedown', () => moveSide = -0.13);
+        document.getElementById('left').addEventListener('mouseup', () => moveSide = 0);
+
+        document.getElementById('right').addEventListener('touchstart', () => moveSide = 0.13);
+        document.getElementById('right').addEventListener('touchend', () => moveSide = 0);
+        document.getElementById('right').addEventListener('mousedown', () => moveSide = 0.13);
+        document.getElementById('right').addEventListener('mouseup', () => moveSide = 0);
+
+        setInterval(() => {
+            if (moveForward !== 0 || moveSide !== 0) {
+                const dir = camera.object3D.getWorldDirection(new THREE.Vector3());
+                const side = new THREE.Vector3().crossVectors(dir, camera.object3D.up).normalize();
+                camera.object3D.position.x -= dir.x * moveForward * 14;
+                camera.object3D.position.z -= dir.z * moveForward * 14;
+                camera.object3D.position.x -= side.x * moveSide * 14;
+                camera.object3D.position.z -= side.z * moveSide * 14;
+            }
+        }, 16);
+
+        // Robots walking
+        const rPink = document.getElementById('robot-pink');
+        let zPink = 48, dirPink = 1;
+        setInterval(() => { zPink += 0.085 * dirPink; if (zPink > 105 || zPink < 35) dirPink *= -1; rPink.setAttribute('position', `-6 1.5 ${zPink}`); }, 30);
+
+        const rBlue = document.getElementById('robot-blue');
+        let zBlue = 75, dirBlue = -1;
+        setInterval(() => { zBlue += 0.09 * dirBlue; if (zBlue > 105 || zBlue < 45) dirBlue *= -1; rBlue.setAttribute('position', `8 1.5 ${zBlue}`); }, 30);
+
+        // Music (MP3 loop)
+        const music = document.createElement('a-sound');
+        music.setAttribute('src', musicUrl);
+        music.setAttribute('autoplay', 'true');
+        music.setAttribute('loop', 'true');
+        music.setAttribute('volume', '0.4');
+        document.querySelector('a-scene').appendChild(music);
+    </script>
+</body>
+</html>
