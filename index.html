@@ -165,14 +165,14 @@
     </a-scene>
 
     <script>
-        // ====================== 🌸🌸🌸 EDIT YOUR 10 JPEG LINKS HERE (LEFT SIDE) 🌸🌸🌸 ======================
+        // ====================== 🌸🌸🌸 EDIT YOUR 10 JPEG LINKS HERE 🌸🌸🌸 ======================
         const pictureUrls = [
             "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260519_142122.jpg",   // Picture 1
-            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260519_142340.jpg",    // Picture 2
-            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260519_143604.jpg",    // Picture 3
-            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260520_092404.jpg",    // Picture 4
-            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260520_092419.jpg",    // Picture 5
-            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260520_092601.jpg",    // Picture 6
+            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260519_142340.jpg",   // Picture 2
+            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260519_143604.jpg",   // Picture 3
+            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260520_092404.jpg",   // Picture 4
+            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260520_092419.jpg",   // Picture 5
+            "https://raw.githubusercontent.com/DJPetraDJP/BEACH-GALLERY/main/20260520_092601.jpg",   // Picture 6
             "https://picsum.photos/id/201/800/1200",    // Picture 7 (placeholder)
             "https://picsum.photos/id/251/800/1200",    // Picture 8 (placeholder)
             "https://picsum.photos/id/1016/800/1200",   // Picture 9 (placeholder)
@@ -213,33 +213,45 @@
         document.getElementById('right').addEventListener('mousedown', () => moveSide = 0.13);
         document.getElementById('right').addEventListener('mouseup', () => moveSide = 0);
 
-        setInterval(() => {
-            if (moveForward !== 0 || moveSide !== 0) {
-                const dir = camera.object3D.getWorldDirection(new THREE.Vector3());
-                const side = new THREE.Vector3().crossVectors(dir, camera.object3D.up).normalize();
-                camera.object3D.position.x -= dir.x * moveForward * 14;
-                camera.object3D.position.z -= dir.z * moveForward * 14;
-                camera.object3D.position.x -= side.x * moveSide * 14;
-                camera.object3D.position.z -= side.z * moveSide * 14;
+        // Keyboard support
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp' || e.key === 'w') moveForward = 0.16;
+            if (e.key === 'ArrowDown' || e.key === 's') moveForward = -0.11;
+            if (e.key === 'ArrowLeft' || e.key === 'a') moveSide = -0.13;
+            if (e.key === 'ArrowRight' || e.key === 'd') moveSide = 0.13;
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (['ArrowUp','w','ArrowDown','s','ArrowLeft','a','ArrowRight','d'].includes(e.key)) {
+                moveForward = 0;
+                moveSide = 0;
             }
-        }, 16);
+        });
 
-        // Robots walking
-        const rPink = document.getElementById('robot-pink');
-        let zPink = 48, dirPink = 1;
-        setInterval(() => { zPink += 0.085 * dirPink; if (zPink > 105 || zPink < 35) dirPink *= -1; rPink.setAttribute('position', `-6 1.5 ${zPink}`); }, 30);
+        // Animation loop
+        function animate() {
+            const pos = camera.getAttribute('position');
+            const rot = camera.getAttribute('rotation');
 
-        const rBlue = document.getElementById('robot-blue');
-        let zBlue = 75, dirBlue = -1;
-        setInterval(() => { zBlue += 0.09 * dirBlue; if (zBlue > 105 || zBlue < 45) dirBlue *= -1; rBlue.setAttribute('position', `8 1.5 ${zBlue}`); }, 30);
+            const forwardX = -Math.sin(rot.y * Math.PI / 180) * moveForward;
+            const forwardZ = -Math.cos(rot.y * Math.PI / 180) * moveForward;
 
-        // Music (MP3 loop)
-        const music = document.createElement('a-sound');
-        music.setAttribute('src', musicUrl);
-        music.setAttribute('autoplay', 'true');
-        music.setAttribute('loop', 'true');
-        music.setAttribute('volume', '0.4');
-        document.querySelector('a-scene').appendChild(music);
+            camera.setAttribute('position', {
+                x: pos.x + forwardX,
+                y: pos.y,
+                z: pos.z + forwardZ + moveSide * Math.sin(rot.y * Math.PI / 180 + Math.PI/2) * 0.8
+            });
+
+            // Robot walking animation
+            const pinkRobot = document.getElementById('robot-pink');
+            const blueRobot = document.getElementById('robot-blue');
+            if (pinkRobot) pinkRobot.setAttribute('position', {x: -6 + Math.sin(Date.now()/800)*3, y: 1.5, z: 48});
+            if (blueRobot) blueRobot.setAttribute('position', {x: 8 + Math.sin(Date.now()/600)*4, y: 1.5, z: 75});
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+
     </script>
 </body>
 </html>
