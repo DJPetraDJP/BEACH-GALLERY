@@ -28,20 +28,11 @@
     <button id="left"    class="arrow-btn">←</button>
     <button id="right"   class="arrow-btn">→</button>
 
-    <a-scene background="color: #99ddff" fog="type: linear; color: #99ddff; near: 5; far: 180"
+    <a-scene background="color: #87CEEB" fog="type: linear; color: #87CEEB; near: 5; far: 180"
              renderer="antialias: false; logarithmicDepthBuffer: true" shadow="cast: false; receive: false">
 
-        <!-- Ocean -->
-        <a-plane position="0 0.05 -145" rotation="-90 0 0" width="400" height="280" color="#0088ff" material="opacity: 0.9; transparent: true"></a-plane>
-
-        <!-- Beach -->
-        <a-plane position="0 0.08 0" rotation="-90 0 0" width="240" height="230" color="#ffe8b3"></a-plane>
-
-        <!-- Pink Street -->
-        <a-plane position="0 0.18 -35" rotation="-90 0 0" width="16" height="210" color="#ff4da6"></a-plane>
-
-        <!-- Green Stripe -->
-        <a-plane position="19 0.22 -35" rotation="-90 0 0" width="9" height="210" color="#4ade80"></a-plane>
+        <!-- GREEN GROUND -->
+        <a-plane position="0 0.08 0" rotation="-90 0 0" width="400" height="400" color="#228B22"></a-plane>
 
         <!-- Pink Trees -->
         <a-entity position="-28 0 -28"><a-cylinder height="6" radius="1.1" color="#8B4513" position="0 3 0"></a-cylinder><a-cone position="0 7 0" height="8" radius-bottom="4.5" color="#ff69b4"></a-cone></a-entity>
